@@ -9,7 +9,10 @@ import { FormsModule } from '@angular/forms';
 import { FilterPokemonPipePipe } from './filter-pokemon--pipe.pipe';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { PokeApiService } from './poke-api.service';
+import { provideHttpClient } from '@angular/common/http';
+import { PokeDetailsComponent } from './poke-details/poke-details.component';
 
 
 @NgModule({
@@ -17,16 +20,22 @@ import {MatButtonModule} from '@angular/material/button';
     AppComponent,
     MyComponentComponent,
     FilterPokemonPipePipe,
+    PokeDetailsComponent,
+    
   ],
   imports: [
-    FormsModule,  
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     MatButtonModule,
-
+    
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideHttpClient(),
+    PokeApiService,
+
+
   ],
   bootstrap: [AppComponent]
 })

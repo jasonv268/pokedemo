@@ -11,3 +11,10 @@
 </select>
 
 <button mat-raised-button (click)="handleClick(selectedPokemon)">Go</button>
+
+<BR>
+
+
+<div *ngIf="pokeDetails">
+    <app-poke-details [pokeDetails]="pokeDetails"> </app-poke-details>
+</div>
