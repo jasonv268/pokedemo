@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IPokemon, PokeDetails, Pokemon, PokeServiceRes } from '../pokemon';
 import { PokeApiService } from '../poke-api.service';
+import { PokeShareInfoService } from '../poke-share-info.service';
 
 
 @Component({
@@ -19,10 +20,12 @@ export class MyComponentComponent {
 
   pokemons: Pokemon[] = [];
 
-  pokeDetails: PokeDetails = {} as PokeDetails;;
+  pokeDetails: PokeDetails = {} as PokeDetails;
+
+  myDate: Date = new Date();  
 
 
-  constructor(private pokeService: PokeApiService) {
+  constructor(private pokeService: PokeApiService, private pokeShareInfoService: PokeShareInfoService) {
 
 
   }
@@ -37,7 +40,9 @@ export class MyComponentComponent {
 
   handleClick(pokemon: Pokemon | null): void {
 
+
     if (pokemon) {
+      this.pokeShareInfoService.setValue(pokemon.name);
       this.pokeService.getPokemonInfos(pokemon.name).subscribe((data: any) => {
         this.pokeDetails = data;
       });

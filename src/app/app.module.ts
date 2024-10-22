@@ -13,6 +13,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { PokeApiService } from './poke-api.service';
 import { provideHttpClient } from '@angular/common/http';
 import { PokeDetailsComponent } from './poke-details/poke-details.component';
+import { PokeShareInfoService } from './poke-share-info.service';
+
+import { CalendarModule } from 'primeng/calendar';
+
 
 
 @NgModule({
@@ -21,19 +25,21 @@ import { PokeDetailsComponent } from './poke-details/poke-details.component';
     MyComponentComponent,
     FilterPokemonPipePipe,
     PokeDetailsComponent,
-    
+
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
     MatButtonModule,
+    CalendarModule
     
   ],
   providers: [
     provideAnimationsAsync(),
     provideHttpClient(),
     PokeApiService,
+    PokeShareInfoService
 
 
   ],
